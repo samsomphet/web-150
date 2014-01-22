@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+	<title>Auto Tire Finder</title>
+	<meta charset ="utf8">
+</head>
+<body>
+
+This space intentionally left blank.
+
+<script>
+
+var carType = prompt("What kind of vehicle do you have: Toyota or Honda?");
+carType = carType.toLowerCase();
+
+if (carType == "toyota"){
+	var carYear = prompt("What year is your vehicle? Enter full digit, i.e 2014");
+
+	if (carYear >=1995 && carYear<=2004) {
+			var saleTax = 1.095;
+			var modelType = prompt("What kind of vehicle do you have: 4Runner or Corolla?");
+			modelType = modelType.toLowerCase();
+
+			if (modelType == "4runner") {
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P265/70R17 \nfor B = P240/60R16)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (120*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (140*(Number(qtyPurchase))*saleTax));
+
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 
+			} else if (modelType == "corolla"){
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P165/55R15 \nfor B = P145/40R14)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (80*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (90*(Number(qtyPurchase))*saleTax));
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 			
+			
+			} else{
+				console.log("Sorry! We don't have tire for your vehicle.");
+			}					
+	}else if (carYear >=2005) 
+	{
+			var modelType = prompt("What kind of car do you have: 4Runner or Corolla?");
+			modelType = modelType.toLowerCase();
+			if (modelType == "4runner") {
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P265/70R17 \nfor B = P240/60R16)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A")
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including 9.5% sale tax is: \$" + 170*(Number(qtyPurchase)));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + 110*(Number(qtyPurchase)));
+
+				} else{
+					console.log("You did select a tire size. Try again!")
+				}
+			
+			} else if (modelType == "corolla"){
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P165/55R15 \nfor B = P145/40R14)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (95*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (105*(Number(qtyPurchase))*saleTax));
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 			
+	} else {
+		console.log("Sorry! We don't carry the tires for the year of your vehicle.");
+	}
+	
+} else if (carType == "honda"){
+	var carYear = prompt("What year is your vehicle? Enter full digit, i.e 2014");
+
+	if (carYear >=1995 && carYear<=2004) {
+			var saleTax = 1.095;
+			var modelType = prompt("What kind of vehicle do you have: Pilot or Civic?");
+			modelType = modelType.toLowerCase();
+
+			if (modelType == "pilot") {			
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P235/60R16 \nfor B = P240/60R18)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (155*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (175*(Number(qtyPurchase))*saleTax));
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 
+			} else if (modelType == "civic"){
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P185/55R16 \nfor B = P205/55R16)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (74*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (109*(Number(qtyPurchase))*saleTax));
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 			
+			} else{
+				console.log("Sorry! We don't have tire for your vehicle.");
+			}
+						
+	}else if (carYear >=2005) {
+			var saleTax = 1.095;
+			var modelType = prompt("What kind of vehicle do you have: Pilot or Civic?");
+			modelType = modelType.toLowerCase();
+
+			if (modelType == "pilot") {
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P235/60R16 \nfor B = P240/60R18)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (155*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (175*(Number(qtyPurchase))*saleTax));
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 
+			} else if (modelType == "civic"){
+				
+				var tireSize = prompt("What tire size do you preferred? Select: \nA for = P185/55R16 \nfor B = P205/55R16)");
+				tireSize = tireSize.toUpperCase();
+				
+				if (tireSize == "A"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (84*(Number(qtyPurchase))*saleTax));
+				} else if(tireSize == "B"){
+					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+					//qtyPurchase = Number(qtyPurchase);
+							console.log("Your cost including a 9.5% sale tax is: \$" + (119*(Number(qtyPurchase))*saleTax));
+				} else{
+					console.log("Sorry! We don't have the tire size.")
+				} 			
+	}else{
+		console.log("Sorry! We don't carry the tires for the year of your vehicle.");
+	}
+}
+} else {
+	console.log("Sorry! We don't carry inventory for your vehicle.");
+} 	
+		
+</script>
+
+</body>
+</html>
