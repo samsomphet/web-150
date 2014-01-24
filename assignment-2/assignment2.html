@@ -171,16 +171,16 @@ if (carType == "toyota"){
 				tireSize = tireSize.toUpperCase();
 				
 				if (tireSize == "A"){
-					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
-					//qtyPurchase = Number(qtyPurchase);
-							console.log("Your cost including a 9.5% sale tax is: \$" + (84*(Number(qtyPurchase))*saleTax));
+					costPerTire = 84;
 				} else if(tireSize == "B"){
-					var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
 					//qtyPurchase = Number(qtyPurchase);
-							console.log("Your cost including a 9.5% sale tax is: \$" + (119*(Number(qtyPurchase))*saleTax));
+					costPerTire = 119;
 				} else{
 					console.log("Sorry! We don't have the tire size.")
-				} 			
+				}
+				var qtyPurchase = prompt("How many tire would you like to purchase? 1 to 4");
+				var totalCost = costPerTire * Number(qtyPurchase) * saleTax;
+				console.log("Your cost et etc is: $" + totalCost)
 	}else{
 		console.log("Sorry! We don't carry the tires for the year of your vehicle.");
 	}
