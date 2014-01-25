@@ -24,6 +24,7 @@ This space intentionally left blank!
  //If we exclude North America, how does the average expenditure change? 
 
 //console.log(expenditures[3].country);
+var totalCountry = expenditures.length;
 
 var highest = expenditures[0].amount;
 var highCountry;
@@ -31,6 +32,13 @@ var lowest = expenditures[0].amount;
 var lowCountry;
 var rateCounter = 0;
 var totalSpend = 0;
+
+var greater5Counter = 0;
+var less1Counter = 0;
+
+var totalNamerica = 0;
+var totalExecNamerica = 0;
+
 for (var i = 0; i < expenditures.length; i++){
 	
 	if (expenditures[i].amount < lowest){
@@ -41,9 +49,27 @@ for (var i = 0; i < expenditures.length; i++){
 		highest = expenditures[i].amount;
 		highestCountry = expenditures[i].country;	
 	}
-	
+
 	totalSpend = totalSpend + Number(expenditures[i].amount);
-	rateCounter++;	
+	rateCounter++;
+	
+	if (expenditures[i].amount > 5){
+		greater5Counter++;
+	}	
+
+	if (expenditures[i].amount < 1){
+		less1Counter++;
+	}
+	
+	if(expenditures[i].country == "United States" || expenditures[i].country == "Mexico" || expenditures[i].country == "Canada" ){
+		totalNamerica = totalNamerica + Number(expenditures[i].amount);
+	} 
+
+	if(expenditures[i].country != "United States" || expenditures[i].country != "Mexico" || expenditures[i].country != "Canada" ){
+		totalExecNamerica = totalExecNamerica + Number(expenditures[i].amount);
+	} 	
+	
+	
 }
 
 //totalSpend = Number(totalSpend);
@@ -54,7 +80,16 @@ console.log("The country with the lowest expenditures is " + lowestCountry +" or
 //console.log(highest);
 console.log("The country with the highest expenditures is " + highestCountry + " or " + highest + "%.");
 
-console.log("Average military expenditure rate is " + (totalSpend/ rateCounter) + "%." );
+console.log("Overall average military expenditure rate is " + (totalSpend/ rateCounter) + "%." );
+
+console.log("Number of countries spend more 5% is "  + greater5Counter );
+
+console.log("Number of countries spend less than 1% is " + less1Counter );
+
+console.log("Average expenditures for just North America is " + Number(totalNamerica/3) + "%.");
+
+console.log("Average, excluding North America, is " + Number(totalExecNamerica/130) + "%.");
+
 
 
 </script>
