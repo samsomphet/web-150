@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<title>Assignment #3 - Around the World</title>
+	<meta charset=utf8)
+</head>
+<body>
+This space intentionally left blank!
+
+<script src="http://thomaswilburn.net/sccc/data/expenditures.js"></script>
+
+<script>
+//What's the country with the highest expenditures?
+//What's the country with the lowest?
+//What is the average military expenditure rate? 
+
+
+//console.log(expenditures[3].country);
+
+var highest = expenditures[0].amount;
+var highCountry;
+var lowest = expenditures[0].amount;
+var lowCountry;
+var rateCounter = 0;
+var totalSpend = 0;
+for (var i = 0; i < expenditures.length; i++){
+	
+	if (expenditures[i].amount < lowest){
+		lowest = expenditures[i].amount;
+		lowestCountry = expenditures[i].country;
+	}
+	if (expenditures[i].amount > highest){
+		highest = expenditures[i].amount;
+		highestCountry = expenditures[i].country;	
+	}
+	
+	totalSpend = totalSpend + Number(expenditures[i].amount);
+	rateCounter++;	
+}
+
+//totalSpend = Number(totalSpend);
+//rateCounter = Number(rateCounter);
+//console.log(lowest);
+console.log("The country with the lowest expenditures is " + lowestCountry +" or " + lowest + "%.");
+
+//console.log(highest);
+console.log("The country with the highest expenditures is " + highestCountry + " or " + highest + "%.");
+
+console.log("Average military expenditure rate is " + (totalSpend/ rateCounter) + "%." );
+
+
+</script>
+
+</body>
+</html>
