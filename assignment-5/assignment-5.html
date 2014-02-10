@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+	<title>Assignment #5 - Boy Meets Gallery</title>
+	<meta charset="utf8">
+	<style>
+		.tabs { padding: 0; margin: 0; }
+		.tabs li { 
+			display: inline-block;
+			border: 1px solid black;
+			border-radius: 4px 4px 0 0;
+			padding: 4px 12px;
+			background: #DDD;
+		}
+		.tabs li.active {
+			background: white;
+			border-bottom: 1px solid red;
+		}
+		.tab { height: 400px; background: #EEE; font-size: 32px; }
+	</style>
+</head>
+<body>
+
+	<ul class="tabs">
+	
+	    <li> <a href="#first">First</a> </li>
+		<li> <a href="#previous">Previous</a></li>
+		<li> <a href="#one">One</a> </li>
+		<li> <a href="#two">Two</a> </li>
+		<li> <a href="#three">Three</a> </li>
+		<li> <a href="#four">Four</a> </li>		
+		<li> <a href="#five">Five</a> </li>		
+		<li> <a href="#six">Six</a> </li>		
+		<li> <a href="#seven">Seven</a> </li>		
+		<li> <a href="#eight">Eight</a> </li>		
+		<li> <a href="#nine">Nine</a> </li>
+		<li> <a href="#ten">Ten</a> </li>
+		<li> <a href="#next">Next</a></li>
+		<li> <a href="#last">Last</a> </li>
+	</ul>
+
+	<div class="tab" id="one">
+		 <img src="bird1.jpg" alt="Big Bird" height="400" width="400">
+	</div>
+
+	<div class="tab" id="two">
+		<img src="bird2.jpg" alt="Big Bird2" height="400" width="400">
+	</div>
+
+	<div class="tab" id="three">
+		<img src="bird3.jpg" alt="Big Bird2" height="400" width="400">
+	</div>
+
+	<div class="tab" id="four">
+		<img src="bird4.jpg" alt="Big Bird2" height="400" width="400">
+	</div>	
+	
+	<div class="tab" id="five">
+		<img src="bird5.jpg" alt="Big Bird2" height="400" width="400">
+	</div>	
+	
+	<div class="tab" id="six">
+		<img src="bird6.jpg" alt="Big Bird2" height="400" width="400">
+	</div>
+	
+	<div class="tab" id="seven">
+		<img src="bird7.jpg" alt="Big Bird2" height="400" width="400">
+	</div>	
+	
+	<div class="tab" id="eight">
+		<img src="bird8.jpg" alt="Big Bird2" height="400" width="400">
+	</div>	
+	
+	<div class="tab" id="nine">
+		<img src="bird9.jpg" alt="Big Bird2" height="400" width="400">
+	</div>	
+	
+	<div class="tab" id="ten">
+		<img src="bird10.jpg" alt="Big Bird2" height="400" width="400">
+	</div>	
+	
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js">
+	</script>
+
+	<script>
+	
+	
+//find the elements we want to monitor for events
+var myTabLinks = $(".tabs a");
+myTabLinks.on("click", function(e) {
+	//hide current tab
+	$(".tab:visible").hide();
+	//get the <a> that was clicked
+	var $this = $(this);
+
+	//if ($this == .html("href=#first"){}
+	
+	//get its href value
+	var href = $this.attr("href");
+	
+	
+	//if(href == #first){
+	//	var tab = $(href);
+	//}
+
+	var tab = $(href);
+		
+	//find the tab with that value
+//	var tab = $(href)	
+	//show it
+	tab.fadeIn();	
+
+	
+	//cancel the navigation
+	e.preventDefault();
+	//remove any .active classes on the page
+	$(".active").removeClass("active");
+	//find the <li> tag that was clicked
+	var li = $this.closest("li");
+	//add the active class to it
+
+	li.addClass("active");
+});
+
+
+var firstTab = myTabLinks.filter(":first");
+firstTab.click(); //.trigger("click");
+
+//$( "li" ).first().css( "background-color", "red" );
+
+
+	</script>
+</body>
+</html>
