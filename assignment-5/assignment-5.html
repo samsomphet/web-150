@@ -4,27 +4,36 @@
 	<title>Assignment #5 - Boy Meets Gallery</title>
 	<meta charset="utf8">
 	<style>
-		.tabs { padding: 0; margin: 0; }
-		.tabs li { 
+		body{
+			width: 660px;
+			text-align: center;
+		}
+		tabs {padding:0px; margin:0px}
+		.tabs li {
 			display: inline-block;
 			border: 1px solid black;
 			border-radius: 4px 4px 0 0;
-			padding: 4px 12px;
+			padding: 4px 10px;
 			background: #DDD;
 		}
-		.tabs li.active {
+		.tabs li.active{
 			background: white;
 			border-bottom: 1px solid red;
 		}
-		.tab { height: 400px; background: #EEE; font-size: 32px; }
+		.tab{
+			margin-top: 15px;
+			padding: 20px;
+			height: 600px; background: gray;
+		}
 	</style>
+	
 </head>
 <body>
 
 	<ul class="tabs">
 	
-	    <li> <a href="#first">First</a> </li>
-		<li> <a href="#previous">Previous</a></li>
+	    <!--<li> <a href="#first">First</a> </li> -->
+		<!--<li> <a href="#previous">Previous</a></li> -->
 		<li> <a href="#one">One</a> </li>
 		<li> <a href="#two">Two</a> </li>
 		<li> <a href="#three">Three</a> </li>
@@ -35,55 +44,55 @@
 		<li> <a href="#eight">Eight</a> </li>		
 		<li> <a href="#nine">Nine</a> </li>
 		<li> <a href="#ten">Ten</a> </li>
-		<li> <a href="#next">Next</a></li>
-		<li> <a href="#last">Last</a> </li>
+		<!--<li> <a href="#next">Next</a></li> -->
+		<!--<li> <a href="#last">Last</a> </li> -->
 	</ul>
 
 	<div class="tab" id="one">
-		 <img src="bird1.jpg" alt="Big Bird" height="400" width="400">
+		 <img src="http://www.ssomphet.com/web150/bird1.jpg" alt="Big Bird1" height="600" width="600">
+		 
 	</div>
 
 	<div class="tab" id="two">
-		<img src="bird2.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird2.jpg" alt="Big Bird2" height="600" width="600">
 	</div>
 
 	<div class="tab" id="three">
-		<img src="bird3.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird3.jpg" alt="Big Bird3" height="600" width="600">
 	</div>
 
 	<div class="tab" id="four">
-		<img src="bird4.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird4.jpg" alt="Big Bird4" height="600" width="600">
 	</div>	
 	
 	<div class="tab" id="five">
-		<img src="bird5.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird5.jpg" alt="Big Bird5" height="600" width="600">
 	</div>	
 	
 	<div class="tab" id="six">
-		<img src="bird6.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird6.jpg" alt="Big Bird6" height="600" width="600">
 	</div>
 	
 	<div class="tab" id="seven">
-		<img src="bird7.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird7.jpg" alt="Big Bird7" height="600" width="600">
 	</div>	
 	
 	<div class="tab" id="eight">
-		<img src="bird8.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird8.jpg" alt="Big Bird8" height="600" width="600">
 	</div>	
 	
 	<div class="tab" id="nine">
-		<img src="bird9.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird9.jpg" alt="Big Bird9" height="600" width="600">
 	</div>	
 	
 	<div class="tab" id="ten">
-		<img src="bird10.jpg" alt="Big Bird2" height="400" width="400">
+		<img src="http://www.ssomphet.com/web150/bird10.jpg" alt="Big Bird10" height="600" width="600">
 	</div>	
 	
 	<script src="http://code.jquery.com/jquery-2.1.0.min.js">
 	</script>
 
 	<script>
-	
 	
 //find the elements we want to monitor for events
 var myTabLinks = $(".tabs a");
@@ -109,7 +118,6 @@ myTabLinks.on("click", function(e) {
 //	var tab = $(href)	
 	//show it
 	tab.fadeIn();	
-
 	
 	//cancel the navigation
 	e.preventDefault();
@@ -122,13 +130,12 @@ myTabLinks.on("click", function(e) {
 	li.addClass("active");
 });
 
-
-var firstTab = myTabLinks.filter(":first");
-firstTab.click(); //.trigger("click");
-
-//$( "li" ).first().css( "background-color", "red" );
-
+	//$(".tab").not(":first").hide();
+	//tabLinks.filter(":first").click(); //.trigger("click"); //the browser select the first tab without click
+	var birdTab = myTabLinks.filter(":first");
+	birdTab.click(); //.trigger("click");
 
 	</script>
+	
 </body>
 </html>
