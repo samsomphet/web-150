@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+	<title>Paint Shop</title>
+	<meta charset="utf-8">
+	
+	<style>
+		canvas {display: block;}
+		.eraser{
+			background-color: light-gray;
+		}		
+		.stamp{
+			background-color: light-gray;
+		}		
+	</style>	
+	
+	
+</head>
+<body>
+
+<button class="shape" data-shape="square">[]</button>
+<button class="shape" data-shape="circle">0</button>
+
+<button class="size" data-size="10">Small</button>
+<button class="size" data-size="30">Large</button>
+
+<button class="color" data-color="black">Black</button>
+<button class="color" data-color="red">Red</button>
+<button class="color" data-color="blue">Blue</button>
+<button class="color" data-color="pink">Pink</button>
+<button class="color" data-color="orange">Orange</button>
+<button class="color" data-color="white">White</button>
+
+<button class="eraser" data-eraser="eraser"><img src="eraser.ico"></button>
+
+<button class="stamp" data-stamp="stamp"><img src="favicon.ico"></button>
+
+<canvas id="canvas" width=800 height=600></canvas>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d"); //jQuery doesn't have getContext to wrapup
+
+var $canvas = $(canvas); //feed element
+
+var brush ={
+	active: false,
+	shape: "square",
+	size: 20,
+	color: "black",
+	eraser: "eraser",
+	stamp: "stamp"
+};
+
+var drawRect = function(x, y, size){
+	context.fillRect(x - size / 2, y - size / 2, size, size);	//cut in half to get to the middle
+};
+
+var drawCircle = function(x, y, size){
+	context.beginPath();
+	context.arc(x, y, size /2, 0, 2 * Math.PI); //size split the radius
+	context.fill();
+};
+
+//basic mouseover interaction
+$canvas.on("mousemove", function(e) {	//e tell us the position, how far move top, left
+	//console.log(e.pageX, e.pageY); //use e.pageX & e.pageY to tell us the postion
+	var offset = $canvas.offset(); //tell the padding of the page
+	var x = e.pageX - offset.left;
+	var y = e.pageY - offset.top;
+		
+	if (brush.active){
+		context.fillStyle = brush.color; //change the color of the brush
+		//context.fillRect(x, y, 10, 10); //could also just use return
+		//drawRect(x,y,10); //you can change this call drawCircle()
+		
+		if (brush.shape =="circle"){
+			//drawCircle(x,y,10);
+			drawCircle(x,y, brush.size);
+		}else if(brush.shape =="square"){
+			//drawRect(x,y,10);
+			drawRect(x,y, brush.size);
+		}else if(brush.eraser == "eraser"){
+			context.clearRect(0,0, canvas.width, canvas.height);	
+		}else if(brush.stamp == "stamp"){	
+			//var myStamp = new Image();
+			//myStamp.src = "img/stamp.jpg";
+			//drawImage(myStamp, 30,30);
+			d();
+		}	
+	}
+});
+
+$canvas.on("mousedown mouseup", function(e){
+	//console.log(e.type);
+	//if (e.type == "mousedown"){
+	//	brush.active = true;
+	//} else {
+	//	brush.active = false;
+	//}
+	brush.active = e.type == "mousedown";	
+});
+
+var shape = $(".shape");
+shape.on("click", function(){
+	var $this = $(this);
+	var shape = $this.attr("data-shape");
+	brush.shape = shape;   //assign to the brush
+});
+
+var sizes = $(".size");
+sizes.on("click", function(){
+	var $this = $(this);
+	var size = $this.attr("data-size");
+	brush.size = size;
+});
+
+var colors = $(".color");
+colors.on("click", function() {
+	var $this = $(this);
+	var color = $this.attr("data-color");
+	brush.color = color;	
+});
+
+var erasers = $(".eraser");
+erasers.on("click", function() {
+	var $this = $(this);
+	var eraser = $this.attr("data-eraser");
+	brush.eraser = eraser;	
+});
+
+var stamps = $(".stamp");
+stamps.on("click", function() {
+	var $this = $(this);
+	var stamp = $this.attr("data-stamp");
+	brush.stamp = stamp;	
+});
+
+var d =function d(){
+	var myStamp = new Image();
+	myStamp.src = "img/stamp.jpg";
+	return context.drawImage(myStamp, 30,30);
+	}
+
+</script>
+</body>
+</html>
