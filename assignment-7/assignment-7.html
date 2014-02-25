@@ -64,6 +64,15 @@ var drawCircle = function(x, y, size){
 	context.fill();
 };
 
+var eraserMode = function(){
+	//context.fillRect(x - size / 2, y - size / 2, size, size);	//cut in half to get to the middle
+	//context.clearRect(0,0, canvas.width, canvas.height);
+	context.beginPath();
+	context.fillStyle="white";
+	context.fillRect(0,0,300,150);
+	context.clearRect(0,0, 800, 600);
+};
+
 //basic mouseover interaction
 $canvas.on("mousemove", function(e) {	//e tell us the position, how far move top, left
 	//console.log(e.pageX, e.pageY); //use e.pageX & e.pageY to tell us the postion
@@ -74,16 +83,15 @@ $canvas.on("mousemove", function(e) {	//e tell us the position, how far move top
 	if (brush.active){
 		context.fillStyle = brush.color; //change the color of the brush
 		//context.fillRect(x, y, 10, 10); //could also just use return
-		//drawRect(x,y,10); //you can change this call drawCircle()
-		
+		//drawRect(x,y,10); //you can change this call drawCircle()		
 		if (brush.shape =="circle"){
 			//drawCircle(x,y,10);
-			drawCircle(x,y, brush.size);
+			drawCircle(x,y);
 		}else if(brush.shape =="square"){
 			//drawRect(x,y,10);
 			drawRect(x,y, brush.size);
 		}else if(brush.eraser == "eraser"){
-			context.clearRect(0,0, canvas.width, canvas.height);	
+			eraserMode(); 	
 		}else if(brush.stamp == "stamp"){	
 			//var myStamp = new Image();
 			//myStamp.src = "img/stamp.jpg";
@@ -140,7 +148,7 @@ stamps.on("click", function() {
 
 var d =function d(){
 	var myStamp = new Image();
-	myStamp.src = "img/stamp.jpg";
+	myStamp.src = "stamp.jpg";
 	return context.drawImage(myStamp, 30,30);
 	}
 
