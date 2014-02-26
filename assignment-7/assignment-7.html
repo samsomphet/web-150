@@ -83,7 +83,7 @@ $canvas.on("mousemove", function(e) {	//e tell us the position, how far move top
 		//drawRect(x,y,10); //you can change this call drawCircle()		
 		if (brush.shape =="circle"){
 			//drawCircle(x,y,10);
-			drawCircle(x,y);
+			drawCircle(x,y, brush.size);
 		}else if(brush.shape =="square"){
 			//drawRect(x,y,10);
 			drawRect(x,y, brush.size);
