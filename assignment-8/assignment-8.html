@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<title>Magic 8 Ball</title>
+	<meta charset="utf-8">
+	<style>
+		p{font-size: 18px; 
+		font-weight:normal;}
+	</style>
+	
+</head>
+	<h2>Magic 8-ball fortune<h2>
+	<p>Click to find you forturn!</p>
+	<button id="submit">Submit</button>
+	
+	<div class="results"></div>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+
+var getQuote = function(){
+	var request = $.ajax({
+		url:"http://thomaswilburn.net:8080/magic8",
+		dataType: "jsonp"
+	});
+
+	request.done(function(data){
+		//console.log(data);  //test connection
+		$(".results").empty();
+		var body = $("body");
+		var div = $("<div></div>");
+		var p = $("<p></p>");
+		var myAnswer = "";
+		for (var i= 0; i < data.answer.length; i++){
+			myAnswer = myAnswer + data.answer[i];
+		}
+		p.html(myAnswer);
+		div.append(p);	
+		//body.append(div);
+		$(".results").append(div);	
+	});
+		
+	request.fail(function(){
+		console.log("Requet failed");
+	});
+}
+
+var submit = $("#submit");
+submit.on("click", function() {
+	getQuote();
+});
+
+</script>
+
+</html>
