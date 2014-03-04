@@ -58,11 +58,11 @@ var getQuote = function(tag){
 		$(".results").append(div);	
 		
 		
-			
+		$('<img src="'+ images[Math.floor(Math.random() * images.length)] + '">').appendTo('.display');	
 		$(".display").fadeIn(2000);
 		$(".display").slideToggle("slow");
 		//$(".display").fadeToggle("slow");			
-		$('<img src="'+ images[Math.floor(Math.random() * images.length)] + '">').appendTo('.display');
+		
 	});
 		
 	request.fail(function(){
