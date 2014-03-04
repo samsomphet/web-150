@@ -11,33 +11,58 @@
 </head>
 	<h2>Magic 8-ball fortune<h2>
 	<p>Click to find you forturn!</p>
+	
+	<select name="category" id="search">
+	  <option value="Yes">Optimists</option>
+	  <option value="no">Pessimists</option>
+	</select>
+
 	<button id="submit">Submit</button>
 	
+	
+	<div class="display"></div>
 	<div class="results"></div>
+	
+	
+
 
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script>
 
-var getQuote = function(){
+var images = ['magic8-1.jpg', 'magic8-2.jpg', 'magic8-3.jpg', 'magic8-4.jpg', 'magic8-5.jpg'];	
+var getQuote = function(tag){
 	var request = $.ajax({
 		url:"http://thomaswilburn.net:8080/magic8",
-		dataType: "jsonp"
+		dataType: "jsonp",
+		data:{tags: tag}
 	});
 
 	request.done(function(data){
-		//console.log(data);  //test connection
+		console.log(data);  //test connection
 		$(".results").empty();
+		$(".display").empty();
 		var body = $("body");
 		var div = $("<div></div>");
 		var p = $("<p></p>");
 		var myAnswer = "";
+		//var category= data.category;
+		
+		
 		for (var i= 0; i < data.answer.length; i++){
 			myAnswer = myAnswer + data.answer[i];
 		}
 		p.html(myAnswer);
 		div.append(p);	
 		//body.append(div);
+		
 		$(".results").append(div);	
+		
+		
+			
+		$(".display").fadeIn(2000);
+		$(".display").slideToggle("slow");
+		//$(".display").fadeToggle("slow");			
+		$('<img src="'+ images[Math.floor(Math.random() * images.length)] + '">').appendTo('.display');
 	});
 		
 	request.fail(function(){
@@ -47,7 +72,9 @@ var getQuote = function(){
 
 var submit = $("#submit");
 submit.on("click", function() {
-	getQuote();
+	var value = $("#search").val();
+	getQuote(value);
+	
 });
 
 </script>
