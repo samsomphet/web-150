@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="slides">
-    <section>
+    <section class="fSlide">
       <h1>THIS IS A SLIDE</h1>
     </section>
     <section>
@@ -18,7 +18,7 @@
         <li>Hence: middle slide?</li>
       </ul>
     </section>
-    <section>
+    <section class="lSlide">
       <h2>All good things...</h2>
       <p>
         This is the last slide
@@ -31,23 +31,51 @@
   </nav>
   <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
   
+ 
+
   <script>
     $(".slide-controls a").on("click", function() {
       var $this = $(this);
 	  console.log($this);
-	  debugger;
+	  //debugger;
       var current = $(".slides section:visible");
       var slide;
+	  
+	  var bookend = false;
+	  var firstSlide = $(".slides section.fSlide:visible");	//capture first slide
+	  var lastSlide = $(".slides section.lSlide:visible");	//capture last slide
       
 	  if ($this.is(".next")) { //syntax error, is() Check for match against a selector.
-        slide = current.next();
+        
+		if (current.length == lastSlide.length){
+			//debugger;
+			//slide = current;
+			bookend = true;
+		}else{
+			slide = current.next();
+		}
       } else if ($this.is(".previous")){ //added condition for previous
-        slide = current.prev();
+ 
+		if (current.length == firstSlide.length){
+			//debugger;
+			//slide = current;
+			bookend = true;
+		}else{
+			slide = current.prev();
+		}
+ 
       }
-      $(".slides section").hide();
+	  
+	  if (bookend){
+		//do nothing
+	  }else{
+	  $(".slides section").hide();
 		slide.fadeIn();
+	  }
+	  
     }); //missing closing parentheses
-
+	
+	
     $(".slides section:not(:first)").hide();
 	
 </script> <!-- added closing tag -->
