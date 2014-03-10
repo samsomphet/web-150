@@ -26,8 +26,10 @@
     </section>
   </div>
   <nav class="slide-controls">
+   <a class="first">First</a>
     <a class="previous">Previous</a>
     <a class="next">Next</a>
+	 <a class="last">Last</a>
   </nav>
   <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
   
@@ -44,9 +46,12 @@
 	  var bookend = false;
 	  var firstSlide = $(".slides section.fSlide:visible");	//capture first slide
 	  var lastSlide = $(".slides section.lSlide:visible");	//capture last slide
-      
-	  if ($this.is(".next")) { //syntax error, is() Check for match against a selector.
-        
+
+      if ($this.is(".first")){
+        slide = fSlide;
+		bookend = false;
+		
+	  }else if ($this.is(".next")) { //syntax error, is() Check for match against a selector.
 		if (current.length == lastSlide.length){
 			//debugger;
 			//slide = current;
@@ -55,7 +60,6 @@
 			slide = current.next();
 		}
       } else if ($this.is(".previous")){ //added condition for previous
- 
 		if (current.length == firstSlide.length){
 			//debugger;
 			//slide = current;
@@ -63,7 +67,9 @@
 		}else{
 			slide = current.prev();
 		}
- 
+      }else if ($this.is(".last")){
+        slide = lSlide;
+		bookend = false;
       }
 	  
 	  if (bookend){
@@ -75,7 +81,8 @@
 	  
     }); //missing closing parentheses
 	
-	
+    var fSlide = $(".slides section:first");
+    var lSlide = $(".slides section:last");	
     $(".slides section:not(:first)").hide();
 	
 </script> <!-- added closing tag -->
@@ -115,7 +122,7 @@
 }
 .slide-controls a {
   display: inline-block;
-  width: 200px;
+  width: 180px;
   padding: 20px;
   background: #AAA;
 }
