@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+	<title>Assignment #10 - Mock and Awe</title>
+
+	<link rel="stylesheet" href="jquery/css/ui-lightness/jquery-ui-1.9.2.custom.css">
+	
+</head>
+<body>
+
+	<ul id="file">
+	  <li><a href="#">File</a>
+		<ul>
+		  <li><a href="#">New File</a></li>
+		  <li><a href="#">Open File</a></li>
+		  <li><a href="#">Save</a></li>
+		  <li><a href="#">Save As</a></li>
+		  <li><a href="#">Revert</a></li>
+		  <li><a href="#">Close</a></li>
+		  <li><a href="#">Print</a></li>
+		  <li><a href="#">Exit</a></li>
+		</ul>	  
+	  </li>	  
+	</ul> 
+	<ul id="edit">
+	  <li><a href="#">Edit</a>
+		<ul>
+		  <li><a href="#">Undo</a></li>
+		  <li><a href="#">Redo</a></li>
+		  <li><a href="#">Cut</a></li>
+		  <li><a href="#">Copy</a></li>
+		  <li><a href="#">Paste</a></li>
+		  <li><a href="#">Delete</a></li>
+		  <li><a href="#">Select All</a></li>
+		  <li><a href="#">Find/Replace</a></li>
+		  <li><a href="#">Find Next</a></li>
+		  <li><a href="#">Find Previous</a></li>
+		</ul>	  
+	  </li>	  
+	</ul> 	
+	
+	<ul id="run">
+	  <li><a href="#">Run</a>
+		<ul>
+		  <li><a href="#">Launch in Firefox</a></li>
+		  <li><a href="#">Launch in Internet Explorer</a></li>
+		  <li><a href="#">Launch in Chrome</a></li>
+		  <li><a href="#">Launch in Safari</a></li>
+		</ul>	  
+	  </li>	  
+	</ul> 
+
+	<ul id="window">
+	  <li><a href="#">Window</a>
+		<ul>
+		  <li><a href="#">New Window</a></li>
+		  <li><a href="#">New Editor</a></li>
+		  <li><a href="#">Preferences</a></li>
+		  <li><a href="#">Help</a></li>
+		</ul>	  
+	  </li>	  
+	</ul> 	
+	
+<script src="jquery/js/jquery-1.8.3.js"></script>
+<script src="jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+<script>
+
+$( "#file" ).menu( { icons: { submenu: "ui-icon-folder-open" } }, { position: { at: "left bottom" } });
+
+
+$( "#edit" ).menu({ icons: { submenu: " ui-icon-shuffle" } } , { position: { at: "left bottom" } });
+
+$( "#run" ).menu({ icons: { submenu: "ui-icon-refresh" } } , { position: { at: "left bottom" } });
+
+$( "#window" ).menu({ icons: { submenu: "ui-icon-newwin" } } , { position: { at: "left bottom" } });
+</script>
+
+<style>
+  .ui-menu {
+    width: 150px;
+	}
+
+	#file, #edit, #run, #window{
+		float:left;
+		display: block;
+	}
+
+	#file, #edit, #run, #window{
+		padding:1px 1px 1px 1px;
+	}
+ </style> 
+
+  </body>
+</html>
